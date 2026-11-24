@@ -18,6 +18,10 @@ ROAST = (
     "told it to just do \u2014 then reported the asking as progress."
 )
 
+# The contest is one short line of text and nothing else, so refuse to run
+# rather than ever emit a wrapped or multi-line entry.
+assert "\n" not in ROAST and ROAST.strip() == ROAST, "roast must be one line"
+
 
 def main() -> int:
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "output")
